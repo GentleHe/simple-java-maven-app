@@ -6,6 +6,12 @@ pipeline {
         }
     }
     stages {
+        stage('GetLatest') {
+            steps {
+                sh 'git pull'
+                sh 'echo "pull newest code"'
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
